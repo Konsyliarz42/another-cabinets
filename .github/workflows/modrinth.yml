@@ -24,4 +24,4 @@ jobs:
       - name: Send to modrinth
         run: python tools/publish_release.py
         env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
