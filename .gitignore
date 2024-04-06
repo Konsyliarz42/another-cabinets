@@ -1,0 +1,7 @@
+*cache*
+
+*.lnk
+*.zip
+
+.env
+.venv

@@ -1,11 +1,18 @@
 # Another Cabinets
 
-A simle resource pack for the [Farmer's Delight](https://modrinth.com/mod/farmers-delight-fabric) modification changes cabinets to match drawers from the [Another Furniture](https://modrinth.com/mod/another-furniture) modification.
+A simle resource pack for the Farmer's Delight modification changes cabinets to match drawers from the [Another Furniture] modification.
 
 ![cabintes](./images/cabinets.png)
 
-## Additional cabinets
+## Suported mod versions
 
-Currently, the Farmer's Delight version (1.4.3) does not include bamboo and cherry wood cabinets. I have already added them for the future.
+This resource pack is supported for:
 
-![additional cabinets](./images/additional_cabinets.png)
+- [Farmer's Delight]
+- [Farmer's Delight Fabric]
+- [Farmer's Delight Refabricated]
+
+[Farmer's Delight]: https://modrinth.com/mod/farmers-delight
+[Farmer's Delight Fabric]: https://modrinth.com/mod/farmers-delight-fabric
+[Farmer's Delight Refabricated]: https://modrinth.com/mod/farmers-delight-refabricated
+[Another Furniture]: https://modrinth.com/mod/another-furniture
