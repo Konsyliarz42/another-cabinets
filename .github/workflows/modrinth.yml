@@ -20,4 +20,3 @@ jobs:
         run: python tools/make_zip.py -v $GITHUB_REF_NAME
       - name: Send to modrinth
         run: python tools/publish_release.py
-        
