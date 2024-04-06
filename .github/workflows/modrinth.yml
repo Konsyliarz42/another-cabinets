@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-env:
-  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
 jobs:
   publish:
     name: Publish on modrinth
@@ -23,3 +20,5 @@ jobs:
         run: python tools/make_zip.py -v $GITHUB_REF_NAME
       - name: Send to modrinth
         run: python tools/publish_release.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
