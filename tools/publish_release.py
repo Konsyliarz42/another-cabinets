@@ -1,9 +1,10 @@
 import os
-from argparse import ArgumentParser
 from pathlib import Path
 
 import requests
 from dotenv import load_dotenv
+
+load_dotenv()
 
 print("Searching for zip file")
 zip_file = next(Path(".").glob("*.zip"))
@@ -11,27 +12,31 @@ zip_file = next(Path(".").glob("*.zip"))
 print("Fething project: Farmer's Delight")
 fd_project = requests.get("https://api.modrinth.com/v2/project/R2OftAxM")
 fd_project.raise_for_status()
+fd_project_data: dict = fd_project.json()
 
-print("Parsing arguments")
-parser = ArgumentParser()
-parser.add_argument("--version", type=str, required=True)
-parser.add_argument("--changelog", type=str, default="")
-
-args = parser.parse_args()
-
-print("Preparing data for request")
-load_dotenv()
+print("Fething last relase on GitHub")
+release = requests.get(
+    "https://api.github.com/repos/Konsyliarz42/another-cabinets/releases/latest",
+    headers={
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {os.environ["GITHUB_TOKEN"]}",
+        "X-GitHub-Api-Version": "2022-11-28",
+    },
+)
+release.raise_for_status()
+release_data: dict = release.json()
 
 # https://docs.modrinth.com/#tag/versions/operation/createVersion
+print("Preparing data for request")
 headers = {
     "Authorization": os.environ["MODRINTH_TOKEN"],
-    "User-Agent": f"https://github.com/Konsyliarz42/another-cabinets/tree/{args.version}",
+    "User-Agent": f"https://github.com/Konsyliarz42/another-cabinets/tree/{release_data["name"]}",
     "Content-Type": "multipart/form-data",
 }
 data = {
-    "name": args.version,
-    "version_number": args.version,
-    "changelog": args.changelog or None,
+    "name": release_data["name"],
+    "version_number": release_data["name"],
+    "changelog": release_data.get("body", None),
     "dependencies": [
         {  # Farmer's Delight
             "version_id": None,
@@ -52,7 +57,7 @@ data = {
             "dependency_type": "optional",
         },
     ],
-    "game_versions": fd_project.json()["game_versions"],
+    "game_versions": fd_project_data["game_versions"],
     "version_type": "release",
     "loaders": ["minecraft"],
     "featured": False,

@@ -8,9 +8,9 @@ A simle resource pack for the Farmer's Delight modification changes cabinets to 
 
 This resource pack is supported for:
 
-- [Farmer's Delight] - _oficial_
+- [Farmer's Delight]
 - [Farmer's Delight Fabric]
-- [Farmer's Delight Refabricated] - _recomended_
+- [Farmer's Delight Refabricated]
 
 [Farmer's Delight]: https://modrinth.com/mod/farmers-delight
 [Farmer's Delight Fabric]: https://modrinth.com/mod/farmers-delight-fabric
